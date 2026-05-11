@@ -1,14 +1,18 @@
+package br.com.alura.screenmatch.principal;
+
 import br.com.alura.screenmatch.calculo.FiltroRecomendacao;
 import br.com.alura.screenmatch.modelos.Episodio;
 import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 import br.com.alura.screenmatch.calculo.CalculadoraDeTempo;
 
+import java.util.ArrayList;
+
 public class PrincipalJava {
     public static void main(String[] args){
-        Filme meuFilme = new Filme();
-        meuFilme.setNome("O Poderoso Chefão");
-        meuFilme.setAnoDeLancamento(1970);
+        Filme meuFilme = new Filme("O Poderoso Chefão", 1970);
+        //meuFilme.setNome("O Poderoso Chefão");
+        //meuFilme.setAnoDeLancamento(1970);
         meuFilme.setDuracaoEmMinutos(180);
         System.out.println("Duração do Filme:" + meuFilme.getDuracaoEmMinutos());
 
@@ -20,17 +24,17 @@ public class PrincipalJava {
         System.out.println("Total de avaliações: "+ meuFilme.getTotalDeAvaliacoes());
         System.out.println("Média de Avaliações: "+ meuFilme.retornaMedia());
 
-        Serie lost = new Serie();
-        lost.setNome("Lost");
+        Serie lost = new Serie("Lost",2003);
+        //lost.setNome("Lost");
         lost.exibeFichaTecnica();
         lost.setTemporadas(10);
         lost.setEpisodiosPorTemporada(10);
         lost.setMinutosPorEpisodio(50);
         System.out.println("Duração para maratonar lost: " + lost.getDuracaoEmMinutos());
 
-        Filme outroFilme = new Filme();
-        meuFilme.setNome("Avatar");
-        meuFilme.setAnoDeLancamento(2023);
+        Filme outroFilme = new Filme("Avatar", 2023);
+        //euFilme.setNome("Avatar");
+        //meuFilme.setAnoDeLancamento(2023);
         meuFilme.setDuracaoEmMinutos(200);
 
         CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
@@ -46,6 +50,22 @@ public class PrincipalJava {
         episodio.setSerie(lost);
         episodio.setTotalDeVizualizacoes(300);
         filtro.filtra(episodio);
+
+        Filme filme3 = new Filme("Dogville", 2003);
+        //filme3.setNome("Dogville");
+        //filme3.setAnoDeLancamento(2003);
+        filme3.setDuracaoEmMinutos(200);
+        filme3.avalia(10);
+
+        ArrayList<Filme> listaDeFilmes = new ArrayList<>();
+        listaDeFilmes.add(meuFilme);
+        listaDeFilmes.add(outroFilme);
+        listaDeFilmes.add(filme3);
+        System.out.println("Tamanho da lista: " + listaDeFilmes.size());
+        System.out.println("Primeiro filme: " + listaDeFilmes.get(0).getNome());
+        System.out.println(listaDeFilmes);
+        System.out.println("toString do filme: " + listaDeFilmes.get(0).toString());
+
 
 
     }
